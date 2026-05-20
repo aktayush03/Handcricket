@@ -3,137 +3,142 @@ import random
 
 # Core Configurations
 st.set_page_config(
-    page_title="AKT.Ayush: Cyber Arena",
-    page_icon="🏟️",
+    page_title="AKT.Ayush: Neon Matrix",
+    page_icon="⚡",
     layout="centered"
 )
 
-# Light Futuristic Premium Theme Styling Sheet
+# Light Futuristic Masterpiece Layout StyleSheet
 st.markdown("""
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;900&family=Rajdhani:wght@600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@500;700&display=swap');
     
-    /* Clean Light Futuristic Backdrop */
+    /* Clean Futuristic Light Base Canvas */
     .stApp {
-        background: linear-gradient(135deg, #f0f4f8 0%, #e6eef5 100%);
-        color: #2D3748;
-        font-family: 'Rajdhani', sans-serif;
+        background: linear-gradient(145deg, #f3f7fa 0%, #e2ebf0 100%);
+        color: #1a202c;
+        font-family: 'Space Grotesk', sans-serif;
     }
 
-    /* Clean Futuristic Title branding */
+    /* Asymmetrical Branding Header */
     .main-logo {
-        font-family: 'Orbitron', sans-serif;
-        font-weight: 900;
-        font-size: 38px;
-        background: linear-gradient(135deg, #3182ce 0%, #00b5d8 100%);
+        font-family: 'Syncopate', sans-serif;
+        font-weight: 700;
+        font-size: 32px;
+        letter-spacing: 6px;
+        background: linear-gradient(135deg, #2b6cb0 0%, #4299e1 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         text-align: center;
-        margin-top: 15px;
-        margin-bottom: 0px;
-        letter-spacing: 2px;
+        margin-top: 25px;
+        margin-bottom: 5px;
     }
     
     .stadium-sub {
         text-align: center;
         text-transform: uppercase;
-        font-family: 'Orbitron', sans-serif;
+        font-family: 'Syncopate', sans-serif;
         color: #718096;
-        font-size: 10px;
-        letter-spacing: 5px;
-        margin-bottom: 30px;
+        font-size: 9px;
+        letter-spacing: 4px;
+        margin-bottom: 35px;
     }
 
-    /* Frosted Glass Floating Arena Board */
+    /* Ultra-Premium Frosted Glass Arena Board */
     .stadium-pitch {
-        background: rgba(255, 255, 255, 0.65);
-        border: 1px solid rgba(255, 255, 255, 0.8);
-        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.45);
+        border: 1px solid rgba(255, 255, 255, 0.7);
+        border-radius: 24px;
         padding: 25px;
-        box-shadow: 0 10px 30px rgba(160, 174, 192, 0.25);
-        backdrop-filter: blur(10px);
+        box-shadow: 0 20px 40px rgba(165, 180, 200, 0.2);
+        backdrop-filter: blur(15px);
         margin-bottom: 25px;
-        text-align: center;
     }
 
-    /* White Glassmorphism Score Split Boxes */
+    /* Floating Holographic Split Panels */
     .hologram-board {
-        background: rgba(255, 255, 255, 0.8);
+        background: rgba(255, 255, 255, 0.75);
         border: 1px solid rgba(255, 255, 255, 0.5);
-        border-radius: 14px;
-        padding: 15px 5px;
+        border-radius: 16px;
+        padding: 18px 10px;
         text-align: center;
-        box-shadow: 0 4px 15px rgba(160, 174, 192, 0.1);
+        box-shadow: 0 8px 25px rgba(165, 180, 200, 0.15);
     }
     
     .score-digits {
-        font-family: 'Orbitron', monospace;
-        font-size: 44px;
-        font-weight: 900;
-        line-height: 1.1;
-        margin: 5px 0;
-        color: #1A202C;
+        font-family: 'Syncopate', monospace;
+        font-size: 38px;
+        font-weight: 700;
+        line-height: 1.2;
+        margin: 6px 0;
+        color: #2d3748;
     }
 
-    /* Clean Light Stream Commentary Dock */
+    /* Minimalist Live Tech Stream Panel */
     .commentary-box {
         margin-top: 20px; 
-        padding: 14px; 
+        padding: 15px; 
         background: rgba(255, 255, 255, 0.9); 
-        border-radius: 12px; 
-        border-left: 4px solid #3182ce;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        border-radius: 14px; 
+        border-left: 4px solid #4299e1;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.02);
         text-align: left;
     }
 
-    /* Spaced Control Dock to Prevent Touch Button Collision */
+    /* Isolated Control Pod to prevent button collision */
     .control-dock {
-        background: rgba(255, 255, 255, 0.5);
-        border-radius: 16px;
-        padding: 15px 10px;
-        margin-top: 15px;
-        border: 1px solid rgba(255, 255, 255, 0.6);
+        background: rgba(255, 255, 255, 0.35);
+        border-radius: 20px;
+        padding: 20px 15px;
+        margin-top: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.5);
     }
 
-    /* Light Matte Blue Touch Grid Nodes */
+    /* High-End Tactile Interface Node Keys */
     .stButton>button {
-        background: #FFFFFF !important;
-        color: #3182ce !important;
-        border: 1px solid rgba(49, 130, 206, 0.3) !important;
-        border-radius: 12px !important;
-        width: 100% !important;
-        height: 52px !important;
-        font-family: 'Orbitron', sans-serif !important;
-        font-size: 20px !important;
-        font-weight: 900 !important;
-        transition: all 0.2s ease-in-out !important;
-        box-shadow: 0 2px 5px rgba(160, 174, 192, 0.1) !important;
+        background: rgba(255, 255, 255, 0.9) !important;
+        color: #2b6cb0 !important;
+        border: 1px solid rgba(66, 153, 225, 0.25) !important;
+        border-radius: 50% !important;
+        width: 64px !important;
+        height: 64px !important;
+        font-family: 'Syncopate', sans-serif !important;
+        font-size: 18px !important;
+        font-weight: 700 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        margin: 0 auto !important;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        box-shadow: 0 4px 10px rgba(165, 180, 200, 0.2) !important;
     }
     
     .stButton>button:hover {
-        background: #3182ce !important;
-        color: #FFFFFF !important;
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(49, 130, 206, 0.3) !important;
-        border-color: #3182ce !important;
+        background: #2b6cb0 !important;
+        color: #ffffff !important;
+        transform: scale(1.1) translateY(-2px);
+        box-shadow: 0 8px 20px rgba(43, 108, 176, 0.35) !important;
+        border-color: #2b6cb0 !important;
     }
 
-    /* Setup Window Main Actions */
+    /* Setup/Config Buttons */
     .level-btn>div>button {
-        border-radius: 12px !important;
+        border-radius: 14px !important;
         width: 100% !important;
         height: auto !important;
-        padding: 14px !important;
+        padding: 16px !important;
+        font-family: 'Space Grotesk', sans-serif !important;
         font-size: 15px !important;
-        background: #FFFFFF !important;
-        color: #2D3748 !important;
-        border: 1px solid rgba(0,0,0,0.08) !important;
+        font-weight: 700 !important;
+        background: #ffffff !important;
+        color: #2d3748 !important;
+        border: 1px solid rgba(0,0,0,0.05) !important;
     }
 
     .level-btn>div>button:hover {
-        background: #3182ce !important;
-        color: #FFFFFF !important;
-        border-color: #3182ce !important;
+        background: #2b6cb0 !important;
+        color: #ffffff !important;
+        border-color: #2b6cb0 !important;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -152,130 +157,128 @@ if 'target_out_score' not in st.session_state:
 if 'game_over' not in st.session_state:
     st.session_state.game_over = False
 if 'ticker_status' not in st.session_state:
-    st.session_state.ticker_status = "ARENA ONLINE • AWAITING FIRST BATTER SHOT"
+    st.session_state.ticker_status = "INTERFACE READY • INITIATE FIRST DELIVERY"
 
 # --- SCREEN 1: PRE-MATCH HUB ---
 if not st.session_state.game_started:
     st.markdown("<h1 class='main-logo'>AKT.AYUSH</h1>", unsafe_allow_html=True)
-    st.markdown("<p class='stadium-sub'>Light Cloud Arena</p>", unsafe_allow_html=True)
+    st.markdown("<p class='stadium-sub'>SYSTEM PANEL v3.0</p>", unsafe_allow_html=True)
     
     st.markdown("<div class='stadium-pitch'>", unsafe_allow_html=True)
-    player_name = st.text_input("CODENAME:", value="Ayush")
+    player_name = st.text_input("PLAYER SIGNATURE:", value="Ayush")
     st.session_state.player_name = player_name
     st.markdown("</div>", unsafe_allow_html=True)
     
-    st.write("### CHOOSE ARENA GRANDSTAND")
+    st.write("### CHOOSE INTERFACE GRID")
     
     st.markdown("<div class='level-btn'>", unsafe_allow_html=True)
-    if st.button("🔵 CLUB SECTOR (Easy Mode • High Run Multiplier)"):
+    if st.button("⚡ ALPHA MATCH (Easy Sector • Open Outfield)"):
         st.session_state.target_out_score = random.randint(110, 160)
-        st.session_state.level = "Easy"
+        st.session_state.level = "Alpha"
         st.session_state.game_started = True
         st.rerun()
-    if st.button("⚪ PAVILION TURF (Moderate Mode • Standard Play)"):
+    if st.button("💎 BETA MATCH (Moderate Sector • Synced Turf)"):
         st.session_state.target_out_score = random.randint(35, 60)
-        st.session_state.level = "Moderate"
+        st.session_state.level = "Beta"
         st.session_state.game_started = True
         st.rerun()
-    if st.button("💎 SKYBOX SUITE (Tough Mode • Instant AI Shutout)"):
+    if st.button("🔮 OMEGA MATCH (Tough Sector • AI Direct Defeat)"):
         st.session_state.target_out_score = random.randint(0, 3)
-        st.session_state.level = "Tough"
+        st.session_state.level = "Omega"
         st.session_state.game_started = True
         st.rerun()
     st.markdown("</div>", unsafe_allow_html=True)
 
 # --- SCREEN 2: THE ENDGAME WRAP-UP ---
 elif st.session_state.game_over:
-    st.markdown("<h1 class='main-logo'>MATCH OVER</h1>", unsafe_allow_html=True)
-    st.markdown("<p class='stadium-sub'>Arena Recap Registry</p>", unsafe_allow_html=True)
+    st.markdown("<h1 class='main-logo'>TERMINATED</h1>", unsafe_allow_html=True)
+    st.markdown("<p class='stadium-sub'>Matrix Sync Complete</p>", unsafe_allow_html=True)
     
     st.markdown(f"""
-        <div class='stadium-pitch' style='border-top: 4px solid #e53e3e;'>
-            <h2 style='color:#e53e3e; font-family:Orbitron; font-weight:900;'>🤖 MATRIX AI WINS</h2>
-            <p style='color:#718096; font-size:14px; margin-bottom:25px;'>The cloud matrix stays completely undefeated.</p>
+        <div class='stadium-pitch' style='border-top: 5px solid #e53e3e;'>
+            <h2 style='color:#e53e3e; font-family:Syncopate; font-weight:700;'>🤖 MATRIX AI OVERRIDE</h2>
+            <p style='color:#718096; font-size:14px; margin-bottom:25px;'>The core system logic remains unbreached.</p>
             <div style='display:flex; justify-content:space-around; align-items:center;'>
-                <div><span style='color:#718096; font-size:12px; font-weight:bold;'>{st.session_state.player_name.upper()}</span><h1 style='font-family:Orbitron; color:#3182ce; margin:5px 0 0 0;'>{st.session_state.player_score}</h1></div>
-                <div style='font-size:20px; color:#A0AEC0; font-weight:bold;'>VS</div>
-                <div><span style='color:#718096; font-size:12px; font-weight:bold;'>MATRIX AI</span><h1 style='font-family:Orbitron; color:#e53e3e; margin:5px 0 0 0;'>{st.session_state.ai_score}</h1></div>
+                <div><span style='color:#718096; font-size:11px; font-weight:bold;'>{st.session_state.player_name.upper()}</span><h1 style='font-family:Syncopate; color:#2b6cb0; margin:5px 0 0 0;'>{st.session_state.player_score}</h1></div>
+                <div style='font-size:18px; color:#a0aec0; font-family:Syncopate;'>VS</div>
+                <div><span style='color:#718096; font-size:11px; font-weight:bold;'>MATRIX AI</span><h1 style='font-family:Syncopate; color:#e53e3e; margin:5px 0 0 0;'>{st.session_state.ai_score}</h1></div>
             </div>
         </div>
     """, unsafe_allow_html=True)
     
-    if st.button("🏟️ BOOT NEXT MATCH RECON"):
+    if st.button("🔄 REBOOT SYSTEM MATRIX"):
         st.session_state.game_started = False
         st.session_state.game_over = False
         st.session_state.player_score = 0
         st.session_state.ai_score = 0
         st.session_state.is_player_batting = True
-        st.session_state.ticker_status = "ARENA ONLINE • AWAITING FIRST BATTER SHOT"
+        st.session_state.ticker_status = "INTERFACE READY • INITIATE FIRST DELIVERY"
         st.rerun()
 
 # --- SCREEN 3: ACTIVE GAME STADIUM ---
 else:
     st.markdown("<h1 class='main-logo'>CYBER ARENA</h1>", unsafe_allow_html=True)
-    st.markdown(f"<p class='stadium-sub'>🏟️ ARENA: {st.session_state.level.upper()}</p>", unsafe_allow_html=True)
+    st.markdown(f"<p class='stadium-sub'>MATRIX LAYER: {st.session_state.level.upper()}</p>", unsafe_allow_html=True)
     
     st.markdown("<div class='stadium-pitch'>", unsafe_allow_html=True)
     
-    # Modern Light Holographic Scoreboard Split Panels
+    # Asymmetrical Tech Scoreboards
     col_p, col_ai = st.columns(2)
     with col_p:
-        status_text = "• BATTING •" if st.session_state.is_player_batting else "FIELDING"
-        lbl_color = "#3182ce" if st.session_state.is_player_batting else "#718096"
+        status_text = "• ACTIVE BAT •" if st.session_state.is_player_batting else "FIELDING"
+        lbl_color = "#2b6cb0" if st.session_state.is_player_batting else "#718096"
         st.markdown(f"""
-            <div class='hologram-board'>
-                <small style='color:#3182ce; font-weight:700; letter-spacing:1px;'>{st.session_state.player_name.upper()}</small>
+            <div class='hologram-board' style='border-bottom: 3px solid {lbl_color};'>
+                <small style='color:#2b6cb0; font-weight:700; letter-spacing:1px;'>{st.session_state.player_name.upper()}</small>
                 <div class='score-digits'>{st.session_state.player_score}</div>
-                <span style='font-size:11px; color:{lbl_color}; font-weight:bold; letter-spacing:1px;'>{status_text}</span>
+                <span style='font-size:10px; color:{lbl_color}; font-weight:700; letter-spacing:1px;'>{status_text}</span>
             </div>
         """, unsafe_allow_html=True)
     with col_ai:
-        status_text = "FIELDING" if st.session_state.is_player_batting else "• BATTING •"
+        status_text = "FIELDING" if st.session_state.is_player_batting else "• ACTIVE BAT •"
         lbl_color = "#718096" if st.session_state.is_player_batting else "#e53e3e"
         st.markdown(f"""
-            <div class='hologram-board'>
+            <div class='hologram-board' style='border-bottom: 3px solid {lbl_color};'>
                 <small style='color:#e53e3e; font-weight:700; letter-spacing:1px;'>MATRIX AI</small>
                 <div class='score-digits'>{st.session_state.ai_score}</div>
-                <span style='font-size:11px; color:{lbl_color}; font-weight:bold; letter-spacing:1px;'>{status_text}</span>
+                <span style='font-size:10px; color:{lbl_color}; font-weight:700; letter-spacing:1px;'>{status_text}</span>
             </div>
         """, unsafe_allow_html=True)
         
-    # Commentary panel integration
+    # Floating Tech Feed Window
     st.markdown(f"""
         <div class='commentary-box'>
-            <span style='font-family:monospace; font-size:14px; color:#4A5568; font-weight:600;'>🎙️ {st.session_state.ticker_status}</span>
+            <span style='font-family:monospace; font-size:13px; color:#4a5568; font-weight:600;'>📟 SYSTEM FEED // {st.session_state.ticker_status}</span>
         </div>
         </div>
     """, unsafe_allow_html=True)
     
-    # Clean Padded Control Dock container block to isolate the interactive rows
-    st.markdown("<div class='control-dock'><p style='text-align:center; font-size:11px; font-weight:700; color:#718096; letter-spacing:2px; margin-top:0px; margin-bottom:12px;'>TAP TO RUN SHOT DELIVERY</p>", unsafe_allow_html=True)
+    # Fully Spaced 3x2 Circular Input Grid to rule out colliding options
+    st.markdown("<div class='control-dock'><p style='text-align:center; font-size:10px; font-weight:700; color:#718096; letter-spacing:3px; margin-top:0px; margin-bottom:15px;'>SELECT INTERFACE DELIVERY</p>", unsafe_allow_html=True)
     
-    # 3x2 Grid Setup for perfect structural safety against overlap on small phones
-    row1_col1, row1_col2, row1_col3 = st.columns(3)
-    row2_col1, row2_col2, row2_col3 = st.columns(3)
+    row1_c1, row1_c2, row1_c3 = st.columns(3)
+    row2_c1, row2_c2, row2_c3 = st.columns(3)
     
     player_choice = None
     
-    with row1_col1:
-        if st.button("1", key="s_1"): player_choice = 1
-    with row1_col2:
-        if st.button("2", key="s_2"): player_choice = 2
-    with row1_col3:
-        if st.button("3", key="s_3"): player_choice = 3
+    with row1_c1:
+        if st.button("1", key="btn_1"): player_choice = 1
+    with row1_c2:
+        if st.button("2", key="btn_2"): player_choice = 2
+    with row1_c3:
+        if st.button("3", key="btn_3"): player_choice = 3
         
-    with row2_col1:
-        if st.button("4", key="s_4"): player_choice = 4
-    with row2_col2:
-        if st.button("5", key="s_5"): player_choice = 5
-    with row2_col3:
-        if st.button("6", key="s_6"): player_choice = 6
+    with row2_c1:
+        if st.button("4", key="btn_4"): player_choice = 4
+    with row2_c2:
+        if st.button("5", key="btn_5"): player_choice = 5
+    with row2_c3:
+        if st.button("6", key="btn_6"): player_choice = 6
         
     st.markdown("</div>", unsafe_allow_html=True)
                 
     if player_choice:
         if st.session_state.is_player_batting:
-            # Rigged Defense AI Logic
             if st.session_state.player_score >= st.session_state.target_out_score:
                 ai_choice = player_choice
             else:
@@ -283,14 +286,13 @@ else:
                 
             if player_choice == ai_choice:
                 st.session_state.is_player_batting = False
-                st.session_state.ticker_status = f"💥 DISMISSED! AI matched your delivery of {player_choice}! Target fixed at {st.session_state.player_score + 1}."
+                st.session_state.ticker_status = f"CRITICAL COLLISION. AI intercepted choice [{player_choice}]. Switching roles."
                 st.rerun()
             else:
                 st.session_state.player_score += player_choice
-                st.session_state.ticker_status = f"🏏 SHOT DRIVEN! You score +{player_choice} runs. (AI bowled {ai_choice})"
+                st.session_state.ticker_status = f"SUCCESS. Node registered +{player_choice} runs. AI vector was [{ai_choice}]."
                 st.rerun()
         else:
-            # Rigged Chase AI Logic
             target_needed = (st.session_state.player_score + 1) - st.session_state.ai_score
             if target_needed <= 6 and target_needed != player_choice:
                 ai_choice = target_needed
@@ -298,7 +300,7 @@ else:
                 ai_choice = random.choice([x for x in range(1, 7) if x != player_choice])
                 
             st.session_state.ai_score += ai_choice
-            st.session_state.ticker_status = f"🤖 AI execution sequence success. Played {ai_choice} against your {player_choice} ball."
+            st.session_state.ticker_status = f"COMPILING. AI logged a smooth [{ai_choice}] play against your delivery grid."
             
             if st.session_state.ai_score > st.session_state.player_score:
                 st.session_state.game_over = True
