@@ -40,7 +40,6 @@ st.markdown("""
         font-family: 'Space Grotesk', sans-serif;
         color: #718096;
         font-size: 11px;
-        key-spacing: 3px;
         font-weight: 700;
         margin-bottom: 25px;
     }
@@ -180,8 +179,8 @@ if not st.session_state.game_started:
     
     st.write("### SELECT GAME MODALITY")
     st.markdown("<div class='lobby-btn'>", unsafe_allow_html=True)
-    if st.button("🟢 CASUAL MATCH (Easy Settings)"):
-        st.session_state.target_out_score = random.randint(110, 160)
+    if st.button("🟢 CASUAL MATCH (Easy Mode • Aim for 200+)"):
+        st.session_state.target_out_score = random.randint(250, 500) # Increased to allow massive scores
         st.session_state.level = "Casual"
         st.session_state.game_started = True
         st.rerun()
@@ -204,8 +203,8 @@ elif st.session_state.game_over:
     
     st.markdown(f"""
         <div class='main-arena-card' style='text-align:center;'>
-            <h2 style='color:#e53e3e; font-family:Syne; font-weight:800; margin-bottom:5px;'>🤖 MATRIX AI WINS</h2>
-            <p style='color:#718096; font-size:14px; margin-bottom:20px;'>Better luck next inning, player.</p>
+            <h2 style='color:#e53e3e; font-family:Syne; font-weight:800; margin-bottom:5px;'>🤖 MATCH CONCLUDED</h2>
+            <p style='color:#718096; font-size:14px; margin-bottom:20px;'>Innings complete.</p>
             <hr style='border-color:rgba(0,0,0,0.05);'>
             <div style='display:flex; justify-content:space-around; margin-top:20px;'>
                 <div><span style='color:#718096; font-size:12px; font-weight:bold;'>{st.session_state.player_name.upper()}</span><h1 style='font-family:Syne; color:#00b5d8; margin:0;'>{st.session_state.player_score}</h1></div>
@@ -297,10 +296,16 @@ else:
         st.session_state.last_player_move = player_choice
         
         if st.session_state.is_player_batting:
-            if st.session_state.player_score >= st.session_state.target_out_score:
-                ai_choice = player_choice
+            # Safe high scoring on Casual Mode
+            if st.session_state.level == "Casual" and st.session_state.player_score < st.session_state.target_out_score:
+                # Completely fair random choice, no rigging early on
+                ai_choice = random.choice([x for x in range(1, 7)])
             else:
-                ai_choice = random.choice([x for x in range(1, 7) if x != player_choice])
+                # Standard defensive code for harder tiers
+                if st.session_state.player_score >= st.session_state.target_out_score:
+                    ai_choice = player_choice
+                else:
+                    ai_choice = random.choice([x for x in range(1, 7) if x != player_choice])
             
             st.session_state.last_ai_move = ai_choice
                 
@@ -313,6 +318,7 @@ else:
                 st.session_state.ticker_status = f"🏏 Clear hit! You score +{player_choice} runs."
                 st.rerun()
         else:
+            # AI chasing player score logic
             target_needed = (st.session_state.player_score + 1) - st.session_state.ai_score
             if target_needed <= 6 and target_needed != player_choice:
                 ai_choice = target_needed
