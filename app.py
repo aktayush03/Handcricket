@@ -1,108 +1,134 @@
 import streamlit as st
 import random
 
-# Page Configuration for Mobile Responsiveness
+# Core Configurations
 st.set_page_config(
-    page_title="AKT.Ayush: Cyber Cricket Stadium",
+    page_title="AKT.Ayush: Cyber Arena",
     page_icon="🏟️",
     layout="centered"
 )
 
-# Advanced CSS & JS for a Moving, High-Tech Virtual Stadium Feel
+# Premium Masterpiece UI Styling Sheet
 st.markdown("""
     <style>
-    /* Virtual Stadium Deep Dark Background with Moving Gradient */
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;900&family=Rajdhani:wght@600;700&display=swap');
+    
+    /* Deep Stadium Night Canvas */
     .stApp {
-        background: linear-gradient(135deg, #050811 0%, #0d1527 50%, #050811 100%);
-        background-size: 400% 400%;
-        animation: stadiumLights 15s ease infinite;
+        background: radial-gradient(circle at 50% 10%, #0c192e 0%, #050a14 100%);
         color: #FFFFFF;
-        font-family: 'Century Gothic', sans-serif;
-    }
-
-    @keyframes stadiumLights {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-    }
-
-    /* Cyber Stadium Glowing Headers */
-    .stadium-title {
-        text-align: center;
-        font-family: 'Courier New', monospace;
-        font-weight: 900;
-        color: #00FFCC;
-        text-shadow: 0 0 10px rgba(0, 255, 204, 0.6), 0 0 20px rgba(0, 255, 204, 0.3);
-        margin-bottom: 0px;
+        font-family: 'Rajdhani', sans-serif;
     }
     
-    .stadium-subtitle {
+    /* Background Particle Animation Elements */
+    .stadium-lights {
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        pointer-events: none;
+        background-image: 
+            radial-gradient(circle at 10% 10%, rgba(0, 255, 204, 0.08) 0%, transparent 40%),
+            radial-gradient(circle at 90% 10%, rgba(255, 51, 102, 0.08) 0%, transparent 40%);
+        z-index: 0;
+    }
+
+    /* Main Virtual Stadium Pitch Container */
+    .stadium-pitch {
+        background: linear-gradient(180deg, rgba(16, 28, 48, 0.6) 0%, rgba(10, 18, 32, 0.8) 100%);
+        border: 2px solid rgba(0, 255, 204, 0.3);
+        border-radius: 24px;
+        padding: 25px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.5), inset 0 0 20px rgba(0, 255, 204, 0.1);
+        backdrop-filter: blur(12px);
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    
+    .pitch-batting { border-color: rgba(0, 255, 204, 0.6); box-shadow: 0 0 25px rgba(0, 255, 204, 0.2); }
+    .pitch-bowling { border-color: rgba(255, 51, 102, 0.6); box-shadow: 0 0 25px rgba(255, 51, 102, 0.2); }
+
+    /* Elegant Typography */
+    .main-logo {
+        font-family: 'Orbitron', sans-serif;
+        font-weight: 900;
+        font-size: 38px;
+        background: linear-gradient(135deg, #00FFCC 0%, #3399FF 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-align: center;
+        margin-bottom: 0px;
+        letter-spacing: 2px;
+    }
+    
+    .stadium-sub {
         text-align: center;
         text-transform: uppercase;
-        letter-spacing: 4px;
+        font-family: 'Orbitron', sans-serif;
         color: #8B949E;
-        font-size: 12px;
-        margin-bottom: 25px;
+        font-size: 11px;
+        letter-spacing: 5px;
+        margin-bottom: 30px;
     }
 
-    /* Neon Hologram Scoreboards */
-    .scoreboard-card {
-        background: rgba(22, 27, 34, 0.7);
-        backdrop-filter: blur(10px);
-        padding: 20px;
-        border-radius: 15px;
+    /* Glassmorphism Dynamic Score Displays */
+    .hologram-board {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        padding: 15px;
         text-align: center;
-        margin-bottom: 15px;
-        transition: all 0.3s ease;
     }
     
-    .player-card {
-        border: 2px solid #00FFCC;
-        box-shadow: 0 0 15px rgba(0, 255, 204, 0.2);
-    }
-    
-    .ai-card {
-        border: 2px solid #FF3366;
-        box-shadow: 0 0 15px rgba(255, 51, 102, 0.2);
+    .score-digits {
+        font-family: 'Orbitron', monospace;
+        font-size: 42px;
+        font-weight: 700;
+        line-height: 1;
+        margin: 8px 0;
     }
 
-    /* Interactive Game Ticker */
-    .stAlert {
-        background: rgba(31, 38, 52, 0.8) !important;
-        border: 1px solid #58A6FF !important;
-        box-shadow: 0 0 10px rgba(88, 166, 255, 0.2);
-        border-radius: 10px;
-    }
-
-    /* Styled Cyber Hand Input Buttons */
+    /* Premium Tactile Digital Gesture Controls */
     .stButton>button {
-        width: 100%;
-        background: linear-gradient(135deg, #161B22 0%, #21262D 100%);
+        background: rgba(22, 27, 34, 0.5) !important;
         color: #00FFCC !important;
-        border: 1px solid #00FFCC !important;
-        border-radius: 12px;
-        font-family: 'Courier New', monospace;
-        font-weight: bold;
-        font-size: 22px;
-        padding: 15px 0px;
-        transition: all 0.2s ease-in-out;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        border: 2px solid rgba(0, 255, 204, 0.4) !important;
+        border-radius: 50% !important;
+        width: 65px !important;
+        height: 65px !important;
+        font-family: 'Orbitron', sans-serif !important;
+        font-size: 22px !important;
+        font-weight: bold !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        margin: 0 auto !important;
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3) !important;
     }
     
     .stButton>button:hover {
-        transform: translateY(-3px);
         background: #00FFCC !important;
-        color: #161B22 !important;
-        box-shadow: 0 0 15px #00FFCC;
+        color: #050a14 !important;
+        transform: scale(1.15);
+        box-shadow: 0 0 20px #00FFCC !important;
+        border-color: #00FFCC !important;
     }
     
-    .stButton>button:active {
-        transform: translateY(1px);
+    /* Level Selection Master Blocks */
+    .level-btn>div>button {
+        border-radius: 14px !important;
+        width: 100% !important;
+        height: auto !important;
+        padding: 15px !important;
+        font-size: 16px !important;
+        border: 1px solid rgba(255,255,255,0.1) !important;
     }
     </style>
+    
+    <!-- Injected Animated Stadium Backdrop -->
+    <div class="stadium-lights"></div>
 """, unsafe_allow_html=True)
 
-# Initialize Session State Variables for Persistent App Flow
+# State Management Logic Initialization
 if 'game_started' not in st.session_state:
     st.session_state.game_started = False
 if 'player_score' not in st.session_state:
@@ -115,96 +141,116 @@ if 'target_out_score' not in st.session_state:
     st.session_state.target_out_score = 0
 if 'game_over' not in st.session_state:
     st.session_state.game_over = False
-if 'log_msg' not in st.session_state:
-    st.session_state.log_msg = "Stadium Matrix Online. Click a digit below to throw your shot!"
+if 'ticker_status' not in st.session_state:
+    st.session_state.ticker_status = "STADIUM ACTIVE • READY FOR KICKOFF"
 
-# --- STADIUM WELCOME SCREEN ---
+# --- SCREEN 1: PRE-MATCH HUB ---
 if not st.session_state.game_started:
-    st.markdown("<h1 class='stadium-title'>⚡ AKT.Ayush</h1>", unsafe_allow_html=True)
-    st.markdown("<p class='stadium-subtitle'>VIRTUAL STADIUM CHALLENGE</p>", unsafe_allow_html=True)
+    st.markdown("<h1 class='main-logo'>AKT.Ayush</h1>", unsafe_allow_html=True)
+    st.markdown("<p class='stadium-sub'>Grand Virtual Arena</p>", unsafe_allow_html=True)
     
-    player_name = st.text_input("ENTER CODENAME:", value="Ayush")
+    # Beautiful Form container
+    st.markdown("<div class='stadium-pitch'>", unsafe_allow_html=True)
+    player_name = st.text_input("CODENAME:", value="Ayush")
     st.session_state.player_name = player_name
+    st.markdown("</div>", unsafe_allow_html=True)
     
-    st.write("### 🏟️ SELECT STADIUM TURF DIFFICULTY")
+    st.write("### 🏟️ CHOOSE YOUR ARENA GRANDSTAND")
     
-    if st.button("🟢 EASY STADIUM (High Run Multiplier)"):
+    st.markdown("<div class='level-btn'>", unsafe_allow_html=True)
+    if st.button("🟢 CLUB STAND (Easy Difficulty • Heavy Outfield)"):
         st.session_state.target_out_score = random.randint(110, 160)
         st.session_state.level = "Easy"
         st.session_state.game_started = True
         st.rerun()
-    if st.button("🟡 MODERATE STADIUM (Balanced Matrix)"):
+    if st.button("🟡 PAVILION END (Moderate Difficulty • Standard Turf)"):
         st.session_state.target_out_score = random.randint(35, 60)
         st.session_state.level = "Moderate"
         st.session_state.game_started = True
         st.rerun()
-    if st.button("🔴 TOUGH STADIUM (Instant Annihilation Grid)"):
+    if st.button("🔴 GRAND STAND (Tough Difficulty • Precision Grid)"):
         st.session_state.target_out_score = random.randint(0, 3)
         st.session_state.level = "Tough"
         st.session_state.game_started = True
         st.rerun()
+    st.markdown("</div>", unsafe_allow_html=True)
 
-# --- STADIUM GAME OVER SCREEN ---
+# --- SCREEN 2: THE ENDGAME WRAP-UP ---
 elif st.session_state.game_over:
-    st.markdown("<h1 class='stadium-title'>🤖 MATCH OVER</h1>", unsafe_allow_html=True)
-    st.markdown("<p class='stadium-subtitle'>AI MAINTAINS ITS UNBEATABLE STREAK</p>", unsafe_allow_html=True)
+    st.markdown("<h1 class='main-logo'>MATCH CONCLUDED</h1>", unsafe_allow_html=True)
+    st.markdown("<p class='stadium-sub'>Final Arena Statistics</p>", unsafe_allow_html=True)
     
     st.markdown(f"""
-        <div class='scoreboard-card ai-card' style='max-width: 400px; margin: 0 auto 20px auto;'>
-            <h3 style='color:#FF3366;'>🏆 SYSTEM AI VICTORIOUS</h3>
-            <p style='font-size: 18px;'><b>{st.session_state.player_name}</b>: {st.session_state.player_score} runs</p>
-            <p style='font-size: 18px;'><b>Matrix AI</b>: {st.session_state.ai_score} runs</p>
+        <div class='stadium-pitch' style='border-color: #FF3366; box-shadow: 0 0 30px rgba(255,51,102,0.3);'>
+            <h2 style='color:#FF3366; font-family:Orbitron;'>🤖 MATRIX AI WINS</h2>
+            <p style='color:#8B949E;'>The algorithm stays undefeated in the {st.session_state.level} Arena.</p>
+            <hr style='border-color:rgba(255,255,255,0.1);'>
+            <div style='display:flex; justify-content:space-around; margin-top:15px;'>
+                <div><h5>{st.session_state.player_name.upper()}</h5><h2 style='font-family:Orbitron; color:#00FFCC;'>{st.session_state.player_score}</h2></div>
+                <div><h5>MATRIX AI</h5><h2 style='font-family:Orbitron; color:#FF3366;'>{st.session_state.ai_score}</h2></div>
+            </div>
         </div>
     """, unsafe_allow_html=True)
     
-    if st.button("⚡ REBOOT STADIUM MATRIX"):
+    if st.button("🏟️ RESET ARENA MATRIX"):
         st.session_state.game_started = False
         st.session_state.game_over = False
         st.session_state.player_score = 0
         st.session_state.ai_score = 0
         st.session_state.is_player_batting = True
-        st.session_state.log_msg = "Stadium Matrix Online. Click a digit below to throw your shot!"
+        st.session_state.ticker_status = "STADIUM ACTIVE • READY FOR KICKOFF"
         st.rerun()
 
-# --- ACTIVE LIVE MATCH ARENA ---
+# --- SCREEN 3: ACTIVE GAME STADIUM ---
 else:
-    st.markdown("<h1 class='stadium-title'>🏟️ CYBER STADIUM</h1>", unsafe_allow_html=True)
-    st.markdown(f"<p class='stadium-subtitle'>MODE: {st.session_state.level.upper()} | {'YOU ARE BATTING' if st.session_state.is_player_batting else 'AI IS BATTING'}</p>", unsafe_allow_html=True)
+    st.markdown("<h1 class='main-logo'>CYBER ARENA</h1>", unsafe_allow_html=True)
+    st.markdown(f"<p class='stadium-sub'>🏟️ STADIUM ENCLOSURE: {st.session_state.level.upper()}</p>", unsafe_allow_html=True)
     
-    # Grid Scoreboards
+    # Active Dynamic Stadium Card wrapper
+    pitch_class = "pitch-batting" if st.session_state.is_player_batting else "pitch-bowling"
+    st.markdown(f"<div class='stadium-pitch {pitch_class}'>", unsafe_allow_html=True)
+    
+    # Holographic Scoreboard Layout
     col_p, col_ai = st.columns(2)
     with col_p:
         st.markdown(f"""
-            <div class='scoreboard-card player-card'>
-                <span style='color:#00FFCC; font-weight:bold; letter-spacing:1px;'>{st.session_state.player_name.upper()}</span>
-                <h1 style='color:#FFFFFF; margin:10px 0px; font-family:monospace;'>{st.session_state.player_score}</h1>
-                <small style='color:#8B949E;'>{'BATTING' if st.session_state.is_player_batting else 'BOWLING'}</small>
+            <div class='hologram-board'>
+                <small style='color:#00FFCC; font-weight:700; letter-spacing:1px;'>{st.session_state.player_name.upper()}</small>
+                <div class='score-digits' style='color:#FFFFFF;'>{st.session_state.player_score}</div>
+                <span style='font-size:12px; color:#8B949E;'>{'• CURRENT BATTER •' if st.session_state.is_player_batting else 'FIELDING'}</span>
             </div>
         """, unsafe_allow_html=True)
     with col_ai:
         st.markdown(f"""
-            <div class='scoreboard-card ai-card'>
-                <span style='color:#FF3366; font-weight:bold; letter-spacing:1px;'>MATRIX AI</span>
-                <h1 style='color:#FFFFFF; margin:10px 0px; font-family:monospace;'>{st.session_state.ai_score}</h1>
-                <small style='color:#8B949E;'>{'BOWLING' if st.session_state.is_player_batting else 'BATTING'}</small>
+            <div class='hologram-board'>
+                <small style='color:#FF3366; font-weight:700; letter-spacing:1px;'>MATRIX AI</small>
+                <div class='score-digits' style='color:#FFFFFF;'>{st.session_state.ai_score}</div>
+                <span style='font-size:12px; color:#8B949E;'>{'FIELDING' if st.session_state.is_player_batting else '• CURRENT BATTER •'}</span>
             </div>
         """, unsafe_allow_html=True)
         
-    st.info(st.session_state.log_msg)
+    # Live Action Stadium Commentary Bar
+    st.markdown(f"""
+        <div style='margin-top:20px; padding:12px; background:rgba(0,0,0,0.3); border-radius:10px; border-left:4px solid #3399FF;'>
+            <span style='font-family:monospace; font-size:14px; color:#E1E4E8;'>🎙️ {st.session_state.ticker_status}</span>
+        </div>
+        </div>
+    """, unsafe_allow_html=True)
     
-    st.write("### Tap a Number to Swing:")
+    st.markdown("<p style='text-align:center; font-weight:700; color:#8B949E; margin-top:10px;'>TAP RUN INPUT DELIVERY</p>", unsafe_allow_html=True)
     
-    # 6-Column Mobile Layout Touch Targets
+    # Beautifully-spaced Circular Shot Grid
     grid = st.columns(6)
     player_choice = None
     
     for idx, col in enumerate(grid):
-        if col.button(str(idx + 1), key=f"hand_{idx}"):
-            player_choice = idx + 1
-            
+        with col:
+            if st.button(str(idx + 1), key=f"shot_{idx}"):
+                player_choice = idx + 1
+                
     if player_choice:
         if st.session_state.is_player_batting:
-            # Rigged Defense AI Logic
+            # Rigged Script Defenses
             if st.session_state.player_score >= st.session_state.target_out_score:
                 ai_choice = player_choice
             else:
@@ -212,14 +258,14 @@ else:
                 
             if player_choice == ai_choice:
                 st.session_state.is_player_batting = False
-                st.session_state.log_msg = f"💥 OUT!!! The Stadium flashlights turn red. Computer bowled {ai_choice}. The Matrix read your swing!"
+                st.session_state.ticker_status = f"💥 OUT STRIKE! AI anticipated the delivery and matches your {player_choice}! Turning over innings."
                 st.rerun()
             else:
                 st.session_state.player_score += player_choice
-                st.session_state.log_msg = f"🟢 BOUNDARY! You threw {player_choice}, Computer threw {ai_choice}. Added +{player_choice} runs to your score!"
+                st.session_state.ticker_status = f"🏏 BOUNDARY SPLIT! You timed a {player_choice} (AI bowled {ai_choice}). Score ticking up!"
                 st.rerun()
         else:
-            # Rigged Chase AI Logic
+            # Rigged Script Run Chase
             target_needed = (st.session_state.player_score + 1) - st.session_state.ai_score
             if target_needed <= 6 and target_needed != player_choice:
                 ai_choice = target_needed
@@ -227,7 +273,7 @@ else:
                 ai_choice = random.choice([x for x in range(1, 7) if x != player_choice])
                 
             st.session_state.ai_score += ai_choice
-            st.session_state.log_msg = f"🤖 AI easily tracks the delivery! AI played {ai_choice}, You bowled {player_choice}."
+            st.session_state.ticker_status = f"🤖 AI drives a clean {ai_choice} past your cover delivery of {player_choice}."
             
             if st.session_state.ai_score > st.session_state.player_score:
                 st.session_state.game_over = True
